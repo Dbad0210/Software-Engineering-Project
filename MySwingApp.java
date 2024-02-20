@@ -7,8 +7,8 @@ public class MySwingApp {
     public static void main(String[] args) {
         // Creating some sample players
         Player player1 = new Player(1, "Player 1", "2020", "Forward");
-        Player player2 = new Player(2, "Player 2", "2021", "Midfielder");
-        Player player3 = new Player(3, "Player 3", "2019", "Defender");
+        Player player2 = new Player(2, "Player 2", "2021", "PointGuard");
+        Player player3 = new Player(3, "Player 3", "2019", "Center");
 
         JFrame frame = new JFrame("Player Names Display");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -17,7 +17,7 @@ public class MySwingApp {
         JPanel panel = new JPanel();
 
         // Creating a button to display player names
-        JButton displayButton = new JButton("Display Player Names");
+        JButton displayButton = new JButton("Display Player Information");
 
         // Adding action listener to the button
         displayButton.addActionListener(new ActionListener() {
@@ -33,7 +33,10 @@ public class MySwingApp {
 
                 // Loop through the players and append their names to the StringBuilder
                 for (Player player : players) {
-                    names.append(player.getName()).append("\n");
+                    names.append("Name: ").append(player.getName()).append("\n");
+                    names.append("Number: ").append(player.getNumber()).append("\n");
+                    names.append("Year: ").append(player.getYear()).append("\n");
+                    names.append("Position: ").append(player.getPosition()).append("\n\n");
                 }
 
                 // Display the player names in a dialog

@@ -10,7 +10,6 @@ public class Player {
 
     public Player(int number, String name, String year, String position)
     {
-        players = new ArrayList<>();
         this.number = number;
         this.name = name;
         this.year = year;
@@ -54,5 +53,4 @@ public class Player {
     public static ArrayList<Player> getPlayers() {
         return players;
     }
-
 }
