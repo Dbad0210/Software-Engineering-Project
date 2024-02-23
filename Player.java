@@ -8,6 +8,7 @@ public class Player {
     private String position;
     private static ArrayList<Player> players = new ArrayList<>();
 
+
     public Player(int number, String name, String year, String position)
     {
         this.number = number;
@@ -54,8 +55,7 @@ public class Player {
         return players;
     }
 
-    public static void addPlayer(Player player) {
-        players.add(player);
+    public static void removePlayer(Player player) {
+        players.remove(player);
     }
-
 }
