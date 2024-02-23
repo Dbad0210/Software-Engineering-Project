@@ -10,12 +10,11 @@ public class Player {
 
     public Player(int number, String name, String year, String position)
     {
-        players = new ArrayList<>();
         this.number = number;
         this.name = name;
         this.year = year;
         this.position = position;
-        players.add(this); // Add the new player to the static list
+        players.add(this); // Add the new player to the static list of players
     }
 
 
@@ -53,6 +52,10 @@ public class Player {
 
     public static ArrayList<Player> getPlayers() {
         return players;
+    }
+
+    public static void addPlayer(Player player) {
+        players.add(player);
     }
 
 }
