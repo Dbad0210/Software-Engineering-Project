@@ -359,8 +359,6 @@ public class Java_GUI_Form extends javax.swing.JPanel {
                 ex.printStackTrace();
             }
         }
-
-
     }//GEN-LAST:event_jbtnAddActionPerformed
 
     private void jtxtNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtNumberActionPerformed
@@ -388,12 +386,13 @@ public class Java_GUI_Form extends javax.swing.JPanel {
     }//GEN-LAST:event_jtxtThreePointMadeActionPerformed
     private JFrame frame;
 
+    // EXIT Action
+    
     private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
         frame = new JFrame("Exit");
         if (JOptionPane.showConfirmDialog(frame, "Confirm Exit?", "Java Basketball Tracker", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
-
     }//GEN-LAST:event_jbtnExitActionPerformed
 
     // RESET Action
@@ -409,45 +408,59 @@ public class Java_GUI_Form extends javax.swing.JPanel {
         jtxtThreePoint_Percentage.setText("");
     }//GEN-LAST:event_jbtnResetActionPerformed
 
-    // UPDATE Action
+    // !!!!!!!!!!!!!!!!!!!!!!! UPDATE Action !!!!!!!!!!!!!!!!!!!!!!!
     
     private void jbtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUpdateActionPerformed
-         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            sqlConn = DriverManager.getConnection(dataConn, username, password);
-            pst = sqlConn.prepareStatement("update PlayerStats set Player = ?, Number = ?, FTA = ?,  FTM = ?, FT_Percentage = ?, ThreePointAttempts = ?, ThreePointMade = ?, ThreePoint_Percentage = ? ");
-            pst.setString(0, jtxtPlayer.getText());
-            pst.setString(1, jtxtNumber.getText());
-            pst.setString(2, jtxtFTA.getText());
-            pst.setString(3, jtxtFTM.getText());
-            pst.setString(4, jtxtFT_Percentage.getText());
-            pst.setString(5, jtxtThreePointAttempts.getText());
-            pst.setString(6, jtxtThreePointMade.getText());
-            pst.setString(7, jtxtThreePoint_Percentage.getText());
+try {
+    int selectedRow = jTable1.getSelectedRow();
 
-            pst.executeUpdate();
-            JOptionPane.showMessageDialog(this, "Record Updated");
-            upDateDB();
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(this, "Please select a row to update.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
 
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "SQL Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Class not found: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        } finally {
-            // Close resources in the finally block
-            try {
-                if (pst != null) {
-                    pst.close();
-                }
-                if (sqlConn != null) {
-                    sqlConn.close();
-                }
-            } catch (SQLException ex) {
-                ex.printStackTrace();
-            }
+    String player = jTable1.getValueAt(selectedRow, 0).toString();
+    int number = Integer.parseInt(jTable1.getValueAt(selectedRow, 1).toString());
+    int fta = Integer.parseInt(jTable1.getValueAt(selectedRow, 2).toString());
+    int ftm = Integer.parseInt(jTable1.getValueAt(selectedRow, 3).toString());
+
+    // Execute the UPDATE statement
+    Class.forName("com.mysql.jdbc.Driver");
+    sqlConn = DriverManager.getConnection(dataConn, username, password);
+    pst = sqlConn.prepareStatement("UPDATE PlayerStats SET Player = ?, Number = ?, FTA = ?, FTM = ?, FT_Percentage = ?, ThreePointAttempts = ?, ThreePointMade = ?, ThreePoint_Percentage = ?");
+    pst.setString(1, player);
+    pst.setInt(2, number);
+    pst.setInt(3, fta);
+    pst.setInt(4, ftm);
+    pst.setString(5, jtxtFT_Percentage.getText());
+    pst.setString(6, jtxtThreePointAttempts.getText());
+    pst.setString(7, jtxtThreePointMade.getText());
+    pst.setString(8, jtxtThreePoint_Percentage.getText());
+    pst.executeUpdate();
+
+    JOptionPane.showMessageDialog(this, "Record Updated");
+    upDateDB(); // Refresh the table
+
+} catch (SQLException ex) {
+    ex.printStackTrace();
+    JOptionPane.showMessageDialog(this, "SQL Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+} catch (ClassNotFoundException ex) {
+    ex.printStackTrace();
+    JOptionPane.showMessageDialog(this, "Class not found: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+} finally {
+    // Close resources in the finally block
+    try {
+        if (pst != null) {
+            pst.close();
         }
+        if (sqlConn != null) {
+            sqlConn.close();
+        }
+    } catch (SQLException ex) {
+        ex.printStackTrace();
+    }   }
+                            
+
     }//GEN-LAST:event_jbtnUpdateActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -469,12 +482,12 @@ public class Java_GUI_Form extends javax.swing.JPanel {
     private void jbtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDeleteActionPerformed
 try {
         int selectedRow = jTable1.getSelectedRow();
-        
+
         if (selectedRow == -1) {
             JOptionPane.showMessageDialog(this, "Please select a row to delete.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         String player = jTable1.getValueAt(selectedRow, 0).toString();
         int number = Integer.parseInt(jTable1.getValueAt(selectedRow, 1).toString());
         int fta = Integer.parseInt(jTable1.getValueAt(selectedRow, 2).toString());
