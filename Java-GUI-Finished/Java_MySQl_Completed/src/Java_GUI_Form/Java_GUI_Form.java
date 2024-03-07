@@ -26,7 +26,7 @@ import java.util.Vector;
 
 public class Java_GUI_Form extends javax.swing.JPanel {
 
-    private static final String username = "figueroaf";
+    private static final String username = "project";
     private static final String password = "project";
     private static final String dataConn = "jdbc:mysql://localhost:3306/PlayerStats";
 
@@ -446,14 +446,14 @@ public class Java_GUI_Form extends javax.swing.JPanel {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         DefaultTableModel RecordTable = (DefaultTableModel) jTable1.getModel();
          int SelectedRows = jTable1.getSelectedRow();  
-        jtxtPlayer.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
-        jtxtNumber.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
-        jtxtFTA.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
-        jtxtFTM.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
-        jtxtFT_Percentage.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
-        jtxtThreePointAttempts.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
-        jtxtThreePointMade.setText(RecordTable.getValueAt(SelectedRows, 7).toString());
-        jtxtThreePoint_Percentage.setText(RecordTable.getValueAt(SelectedRows, 8).toString());
+        jtxtPlayer.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
+        jtxtNumber.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
+        jtxtFTA.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
+        jtxtFTM.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
+        jtxtFT_Percentage.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
+        jtxtThreePointAttempts.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
+        jtxtThreePointMade.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
+        jtxtThreePoint_Percentage.setText(RecordTable.getValueAt(SelectedRows, 7).toString());
          
     }//GEN-LAST:event_jTable1MouseClicked
 
