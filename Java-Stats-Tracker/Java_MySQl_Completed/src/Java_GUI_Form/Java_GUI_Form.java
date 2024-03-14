@@ -26,7 +26,7 @@ import java.util.Vector;
 
 public class Java_GUI_Form extends javax.swing.JPanel {
 
-    private static final String username = "project";
+    private static final String username = "figueroaf";
     private static final String password = "project";
     private static final String dataConn = "jdbc:mysql://localhost:3306/PlayerStats";
 
@@ -182,7 +182,7 @@ public class Java_GUI_Form extends javax.swing.JPanel {
 
         jScrollPane1.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
 
-        jTable1.setFont(new java.awt.Font("Helvetica Neue", 1, 14)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
@@ -202,7 +202,7 @@ public class Java_GUI_Form extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 830, 310));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 1090, 330));
 
         jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel7.setText("Number");
@@ -252,7 +252,7 @@ public class Java_GUI_Form extends javax.swing.JPanel {
         });
         jPanel2.add(jtxtPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 380, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 860, 750));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 1120, 750));
 
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -306,7 +306,7 @@ public class Java_GUI_Form extends javax.swing.JPanel {
         });
         jPanel4.add(jbtnExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 200, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 140, 240, 610));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 140, 240, 610));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -315,9 +315,9 @@ public class Java_GUI_Form extends javax.swing.JPanel {
         jLabel1.setText("Java Basketball Stats Tracker");
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 710, 60));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1120, 110));
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1380, 110));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 1160, 920));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 1410, 930));
     }// </editor-fold>//GEN-END:initComponents
 
     // ADD Action
