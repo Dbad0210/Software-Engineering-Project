@@ -185,14 +185,14 @@ public class Java_GUI_Form extends javax.swing.JPanel {
         jTable1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Player", "Number", "FTA", "FTM", "FT_Percentage", "ThreePointAttempts", "ThreePointMade", "ThreePoint_Percentage"
+                "ID", "Player", "Number", "FTA", "FTM", "FT_Percentage", "3PointAttempts", "3PointMade", "3PointPercentage"
             }
         ));
         jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -411,69 +411,64 @@ public class Java_GUI_Form extends javax.swing.JPanel {
     // !!!!!!!!!!!!!!!!!!!!!!! UPDATE Action !!!!!!!!!!!!!!!!!!!!!!!
     
     private void jbtnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnUpdateActionPerformed
-try {
-    int selectedRow = jTable1.getSelectedRow();
+         try {
+        Class.forName("com.mysql.jdbc.Driver");
+        sqlConn = DriverManager.getConnection(dataConn, username, password);
+        int selectedRow = jTable1.getSelectedRow(); // Get the selected row
+        if (selectedRow != -1) { // Check if a row is selected
+            id = Integer.parseInt(jTable1.getValueAt(selectedRow, 0).toString()); // Get the ID from the first column
 
-    if (selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, "Please select a row to update.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
+            pst = sqlConn.prepareStatement("update PlayerStats set Player = ?, Number = ?, FTA = ?,  FTM = ?, FT_Percentage = ?, ThreePointAttempts = ?, ThreePointMade = ?, ThreePoint_Percentage = ? where ID = ?");
+            pst.setString(1, jtxtPlayer.getText());
+            pst.setString(2, jtxtNumber.getText());
+            pst.setString(3, jtxtFTA.getText());
+            pst.setString(4, jtxtFTM.getText());
+            pst.setString(5, jtxtFT_Percentage.getText());
+            pst.setString(6, jtxtThreePointAttempts.getText());
+            pst.setString(7, jtxtThreePointMade.getText());
+            pst.setString(8, jtxtThreePoint_Percentage.getText());
+            pst.setInt(9, id); // Set the ID value
 
-    String player = jTable1.getValueAt(selectedRow, 0).toString();
-    int number = Integer.parseInt(jTable1.getValueAt(selectedRow, 1).toString());
-    int fta = Integer.parseInt(jTable1.getValueAt(selectedRow, 2).toString());
-    int ftm = Integer.parseInt(jTable1.getValueAt(selectedRow, 3).toString());
-
-    // Execute the UPDATE statement
-    Class.forName("com.mysql.jdbc.Driver");
-    sqlConn = DriverManager.getConnection(dataConn, username, password);
-    pst = sqlConn.prepareStatement("UPDATE PlayerStats SET Player = ?, Number = ?, FTA = ?, FTM = ?, FT_Percentage = ?, ThreePointAttempts = ?, ThreePointMade = ?, ThreePoint_Percentage = ?");
-    pst.setString(1, player);
-    pst.setInt(2, number);
-    pst.setInt(3, fta);
-    pst.setInt(4, ftm);
-    pst.setString(5, jtxtFT_Percentage.getText());
-    pst.setString(6, jtxtThreePointAttempts.getText());
-    pst.setString(7, jtxtThreePointMade.getText());
-    pst.setString(8, jtxtThreePoint_Percentage.getText());
-    pst.executeUpdate();
-
-    JOptionPane.showMessageDialog(this, "Record Updated");
-    upDateDB(); // Refresh the table
-
-} catch (SQLException ex) {
-    ex.printStackTrace();
-    JOptionPane.showMessageDialog(this, "SQL Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-} catch (ClassNotFoundException ex) {
-    ex.printStackTrace();
-    JOptionPane.showMessageDialog(this, "Class not found: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-} finally {
-    // Close resources in the finally block
-    try {
-        if (pst != null) {
-            pst.close();
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(this, "Record Updated");
+            upDateDB();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a row to update.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        if (sqlConn != null) {
-            sqlConn.close();
-        }
+
     } catch (SQLException ex) {
         ex.printStackTrace();
-    }   }
-                            
+        JOptionPane.showMessageDialog(this, "SQL Error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } catch (ClassNotFoundException ex) {
+        ex.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Class not found: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    } finally {
+        // Close resources in the finally block
+        try {
+            if (pst != null) {
+                pst.close();
+            }
+            if (sqlConn != null) {
+                sqlConn.close();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }                
 
     }//GEN-LAST:event_jbtnUpdateActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         DefaultTableModel RecordTable = (DefaultTableModel) jTable1.getModel();
          int SelectedRows = jTable1.getSelectedRow();  
-        jtxtPlayer.setText(RecordTable.getValueAt(SelectedRows, 0).toString());
-        jtxtNumber.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
-        jtxtFTA.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
-        jtxtFTM.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
-        jtxtFT_Percentage.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
-        jtxtThreePointAttempts.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
-        jtxtThreePointMade.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
-        jtxtThreePoint_Percentage.setText(RecordTable.getValueAt(SelectedRows, 7).toString());
+        jtxtPlayer.setText(RecordTable.getValueAt(SelectedRows, 1).toString());
+        jtxtNumber.setText(RecordTable.getValueAt(SelectedRows, 2).toString());
+        jtxtFTA.setText(RecordTable.getValueAt(SelectedRows, 3).toString());
+        jtxtFTM.setText(RecordTable.getValueAt(SelectedRows, 4).toString());
+        jtxtFT_Percentage.setText(RecordTable.getValueAt(SelectedRows, 5).toString());
+        jtxtThreePointAttempts.setText(RecordTable.getValueAt(SelectedRows, 6).toString());
+        jtxtThreePointMade.setText(RecordTable.getValueAt(SelectedRows, 7).toString());
+        jtxtThreePoint_Percentage.setText(RecordTable.getValueAt(SelectedRows, 8).toString());
          
     }//GEN-LAST:event_jTable1MouseClicked
 

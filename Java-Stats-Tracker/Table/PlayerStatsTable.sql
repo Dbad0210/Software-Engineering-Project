@@ -1,4 +1,5 @@
 CREATE TABLE PlayerStats (
+   ID INT AUTO_INCREMENT PRIMARY KEY,
    Player VARCHAR(255),
    Number INT,
    FTA INT,
@@ -8,6 +9,7 @@ CREATE TABLE PlayerStats (
    ThreePointMade INT,
    ThreePoint_Percentage FLOAT
 );
+
 
 INSERT INTO PlayerStats (Player, Number, FTA, FTM, FT_Percentage, ThreePointAttempts, ThreePointMade, ThreePoint_Percentage) VALUES
    ('Emma Altmire', 0, 380, 321, 0.84, 174, 85, 0.489),
