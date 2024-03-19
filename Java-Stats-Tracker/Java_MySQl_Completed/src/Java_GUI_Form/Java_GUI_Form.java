@@ -475,7 +475,7 @@ public class Java_GUI_Form extends javax.swing.JPanel {
     // DELETE Action
     
     private void jbtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDeleteActionPerformed
-try {
+  try {
         int selectedRow = jTable1.getSelectedRow();
 
         if (selectedRow == -1) {
@@ -483,19 +483,13 @@ try {
             return;
         }
 
-        String player = jTable1.getValueAt(selectedRow, 0).toString();
-        int number = Integer.parseInt(jTable1.getValueAt(selectedRow, 1).toString());
-        int fta = Integer.parseInt(jTable1.getValueAt(selectedRow, 2).toString());
-        int ftm = Integer.parseInt(jTable1.getValueAt(selectedRow, 3).toString());
+        int id = Integer.parseInt(jTable1.getValueAt(selectedRow, 0).toString());
 
         // Execute the DELETE statement
         Class.forName("com.mysql.jdbc.Driver");
         sqlConn = DriverManager.getConnection(dataConn, username, password);
-        pst = sqlConn.prepareStatement("DELETE FROM PlayerStats WHERE Player = ? AND Number = ? AND FTA = ? AND FTM = ?");
-        pst.setString(1, player);
-        pst.setInt(2, number);
-        pst.setInt(3, fta);
-        pst.setInt(4, ftm);
+        pst = sqlConn.prepareStatement("DELETE FROM PlayerStats WHERE ID = ?");
+        pst.setInt(1, id);
         pst.executeUpdate();
 
         JOptionPane.showMessageDialog(this, "Record Deleted");
@@ -519,6 +513,7 @@ try {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+    
     }    }//GEN-LAST:event_jbtnDeleteActionPerformed
 
 
