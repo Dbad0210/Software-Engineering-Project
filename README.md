@@ -32,5 +32,10 @@ mysql -u username -p PlayerStats  < PlayerStatsTable.sql
 - Launch the application using NetBeans or by compiling and running the source files.
 - Use the GUI to track and manage player statistics.
 
+### To Run The Program
+- Clone the repository
+- Open a new terminal in the repository and type this `cd Java-Stats-Tracker/Java_MySQl_Completed/dist/` 
+- Then run the program by typing `-jar Java_MySQl_Completed.jar` 
+
 
 
