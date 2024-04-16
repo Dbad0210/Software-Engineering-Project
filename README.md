@@ -8,7 +8,7 @@ A project completed for *CSCI 234 - Intro to Software Engineering* that utilizes
 ### 0. Prerequisites
 First, download the [NetBeans IDE](https://netbeans.apache.org/front/main/download/nb122/nb122/).
 
-Once installed, download [MySQL](https://dev.mysql.com/downloads/mysql/) and follow the steps to create an account.
+Once installed, download [MySQL](https://dev.mysql.com/downloads/mysql/) and follow the [tutorial](https://dev.mysql.com/doc/mysql-getting-started/en/) to create an account.
 
 ### 1. Clone the repository
 Once you are all set up, press the green `<> Code` button to gain a link to clone the repository.
