@@ -26,9 +26,9 @@ import java.util.Vector;
 
 public class Java_GUI_Form extends javax.swing.JPanel {
 
-    private static final String username = "figueroaf";
+    private static final String username = "project";
     private static final String password = "project";
-    private static final String dataConn = "jdbc:mysql://localhost:3306/PlayerStats";
+    private static final String dataConn = "jdbc:mysql://localhost:3306/playerstats";
 
     Connection sqlConn = null;
 
