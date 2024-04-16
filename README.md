@@ -34,7 +34,7 @@ Next, create a new database for the project called `playerstats` with the comman
 mysql> CREATE DATABASE playerstats;
 ```
 
-Now, open a new Terminal window at the `Table` folder in the project's folder. To do this, run the following command (this is assuming the repo was cloned or downloaded to your `Downloads` folder:
+Now, open a new Terminal window at the `Table` folder in the project's folder. To do this, run the following command (this is assuming the `Software-Engineering-Project` repo was cloned or downloaded to your `Downloads` folder):
 
 ```
 cd Downloads/Software-Engineering-Project/Java-Stats-Tracker/Table
