@@ -68,8 +68,14 @@ At the very top of the file, locate lines 29-31 in that file that read:
 
 Replace the placeholder words that read `project` with your MySQL username and password, respectively.
 
+
+
 ### 5. Run the application
 
 If all the above steps were done correctly, you will now be able to successfully run the application!
 
 In the NetBeans IDE, locate and press the green arrow (the "Run Project" button) to run the project locally.
+
+# TESTING To Run The Program
+- Clone the repository
+- Open a new terminal in the repository and paste this `cd Java-Stats-Tracker/Java_MySQl_Completed/dist/ && java -jar Java_MySQl_Completed.jar`
