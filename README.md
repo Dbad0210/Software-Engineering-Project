@@ -1,41 +1,75 @@
 # Java Basketball Stats Tracker
 
 ## Overview
-This project is a Java application designed to track player statistics using MySQL database.
+A project completed for *CSCI 234 - Intro to Software Engineering* that utilizes a Java GUI to track and manage player statistics for the Moravian Women's Basketball Team.
 
-## Installation
+## Installation - Manual Tutorial
 
-### Prerequisites
-- NetBeans IDE
-- MySQL database
+### 0. Prerequisites
+First, download the [NetBeans IDE](https://netbeans.apache.org/front/main/download/nb122/nb122/).
 
-### Steps
-1. Download NetBeans from the official website and open Java-Stats-Tracker folder. Once you finished netbeans installation, open the Java_MySQl_Completed folder in netbeans.
-2. Download the `mysqljconnector`, or get it from the lib folder, and add it to the library of the `java_mysql` after you open it in netbeans. (Note: It might work without it, but it's recommended to include it.)
-3. Create a MySQL database named "PlayerStats".
-4. Make sure in the java_gui_form that the you change your username and password to whatever your mysql username and password is.
+Once installed, download [MySQL](https://dev.mysql.com/downloads/mysql/) and follow the steps to create an account.
 
-### Database Setup
-- Run the following command in your MySQL environment to set up the necessary table, must open the terminal with the table folder:
+### 1. Clone the repository
+Once you are all set up, press the green `<> Code` button to gain a link to clone the repository.
 
-Make sure to replace `username` with your MySQL username.
+Then, open your preferred [IDE](https://aws.amazon.com/what-is/ide/) or a [Command Line Interface](https://en.wikipedia.org/wiki/Command-line_interface#:~:text=A%20command%2Dline%20interface%20\(CLI,interface%20available%20with%20punched%20cards.) and clone the repository with the command `git clone [REPO LINK HERE]`.
 
-mysql -u username -p PlayerStats  < PlayerStatsTable.sql
+### 2. Open the `Java_MySQl_Completed` folder in NetBeans.
 
+### 3. Create a MySQL Database
+Open up a Command Line Interface or Terminal.
 
+Log into MySQL with the following command:
 
+```
+mysql -u [YOUR USER NAME] -p
+```
 
-### Configuration
-- In the Java GUI Form class, update the username and password to match your MySQL credentials if they differ from the default.
+You will then be prompted to enter the password to your MySQL account. If successful, you should be logged in.
 
-## Usage
-- Launch the application using NetBeans or by compiling and running the source files.
-- Use the GUI to track and manage player statistics.
+Next, create a new database for the project called `playerstats` with the command:
 
-### To Run The Program
-- Clone the repository
-- Open a new terminal in the repository and type this `cd Java-Stats-Tracker/Java_MySQl_Completed/dist/` 
-- Then run the program by typing `-jar Java_MySQl_Completed.jar` 
+```
+mysql> CREATE DATABASE playerstats;
+```
 
+Now, open a new Terminal window at the `Table` folder in the project's folder. To do this, run the following command (this is assuming the repo was cloned or downloaded to your `Downloads` folder:
 
+```
+cd Downloads/Software-Engineering-Project/Java-Stats-Tracker/Table
+```
 
+Finally, run the following command in that Terminal to populate (insert data into) the newly created database:
+
+```
+mysql -u [YOUR USER NAME] -p playerstats < PlayerStatsTable.sql 
+```
+
+If successful, you should see that data has been inserted into the database when the following commands are run in MySQL:
+
+```
+mysql> USE playerstats;
+mysql> SELECT * FROM playerstats;
+```
+
+### 4. Edit "java_gui_form.java"
+Go back into the NetBeans IDE where you previously opened the `Java_MySQL_Completed` folder.
+
+In it, go to `Source Packages` ---> `Java_GUI_Form` ---> `java_gui_form.java`.
+
+At the very top of the file, locate lines 29-31 in that file that read:
+
+```
+    private static final String username = "project";
+    private static final String password = "project";
+    private static final String dataConn = "jdbc:mysql://localhost:3306/playerstats";
+```
+
+Replace the placeholder words that read `project` with your MySQL username and password, respectively.
+
+### 5. Run the application
+
+If all the above steps were done correctly, you will now be able to successfully run the application!
+
+In the NetBeans IDE, locate and press the green arrow (the "Run Project" button) to run the project locally.
