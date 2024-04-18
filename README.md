@@ -78,4 +78,4 @@ In the NetBeans IDE, locate and press the green arrow (the "Run Project" button)
 
 # TESTING To Run The Program
 - Clone the repository
-- Open a new terminal in the repository and paste this `cd Java-Stats-Tracker/Java_MySQl_Completed/dist/ && java -jar Java_MySQl_Completed.jar`
+- Open a new terminal in the repository and paste this `cd Java-Stats-Tracker/Java_MySQl_Completed/jarFolder/ && java -jar Java_MySQl_Completed.jar`
