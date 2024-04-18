@@ -312,7 +312,7 @@ public class Java_GUI_Form extends javax.swing.JPanel {
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Cambay Devanagari", 1, 55)); // NOI18N
-        jLabel1.setText("Java Basketball Stats Tracker");
+        jLabel1.setText("Basketball Stats Tracker");
         jPanel6.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 30, 710, 60));
 
         jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 1380, 110));
@@ -390,7 +390,7 @@ public class Java_GUI_Form extends javax.swing.JPanel {
     
     private void jbtnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnExitActionPerformed
         frame = new JFrame("Exit");
-        if (JOptionPane.showConfirmDialog(frame, "Confirm Exit?", "Java Basketball Tracker", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(frame, "Confirm Exit?", "Basketball Tracker", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             System.exit(0);
         }
     }//GEN-LAST:event_jbtnExitActionPerformed
