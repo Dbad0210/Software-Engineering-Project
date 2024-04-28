@@ -76,6 +76,6 @@ If all the above steps were done correctly, you will now be able to successfully
 
 In the NetBeans IDE, locate and press the green arrow (the "Run Project" button) to run the project locally.
 
-# TESTING To Run The Program
+# Run The Program With Command Line
 - Clone the repository
 - Open a new terminal in the repository and paste this `cd Java-Stats-Tracker/Java_MySQl_Completed/jarFolder/ && java -jar Java_MySQl_Completed.jar`
